@@ -7,8 +7,8 @@
     <description></description>
     <license>MIT</license>
     <keywords></keywords>
-    <repo>https://github.com/driftyco/cordova-plugin-template.git</repo>
-    <issue>https://github.com/driftyco/cordova-plugin-template/issues</issue>
+    <repo>https://github.com/asouzarodrigues/bubble-plugin.git</repo>
+    <issue>https://github.com/asouzarodrigues/bubble-plugin/issues</issue>
 
     <!-- android -->
     <platform name="android">
