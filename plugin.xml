@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    id="my-cordova-plugin"
+    id="bubble-plugin"
     version="1.0.0">
-    <name>Cordova Plugin Template</name>
+    <name>bubble-plugin</name>
     <description></description>
     <license>MIT</license>
     <keywords></keywords>
@@ -15,32 +15,56 @@
       <js-module src="www/plugin.js" name="plugin">
         <runs/>
 
-        <!-- This is the window variable name you want, like window.MyCordovaPlugin -->
-        <clobbers target="MyCordovaPlugin" />
+        <!-- This is the window variable name you want, like window.BubblePlugin -->
+        <clobbers target="BubblePlugin" />
       </js-module>
       <config-file target="res/xml/config.xml" parent="/*">
-        <feature name="MyCordovaPlugin">
-          <param name="android-package" value="com.example.MyCordovaPlugin" />
+        <feature name="BubblePlugin">
+          <param name="android-package" value="br.com.clarity.bubble.BubblePlugin" />
           <param name="onload" value="true" />
         </feature>
       </config-file>
-
-      <source-file src="src/android/com/example/MyCordovaPlugin.java" target-dir="src/com/example/" />
-    </platform>
-
-    <!-- ios -->
-    <platform name="ios">
-        <js-module src="www/plugin.js" name="plugin">
-            <runs/>
-            <clobbers target="MyCordovaPlugin" />
-        </js-module>
-        <config-file target="config.xml" parent="/*">
-            <feature name="MyCordovaPlugin">
-                <param name="ios-package" value="MyCordovaPlugin" onload="true" />
-            </feature>
+       <config-file target="AndroidManifest.xml" parent="/manifest/application">
+            <service android:name="br.com.clarity.bubble.BubblesService"
+            android:enabled="true"
+            android:exported="false" />
         </config-file>
 
-        <header-file src="src/ios/MyCordovaPlugin.h" />
-        <source-file src="src/ios/MyCordovaPlugin.m" />
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.VIBRATE" />
+        </config-file>
+         <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+        </config-file>
+            <source-file src="src/android/BubblePlugin.java" target-dir="src/br/com/clarity/bubble" />
+            <source-file src="src/android/BubbleBaseLayout.java" target-dir="src/br/com/clarity/bubble" />
+            <source-file src="src/android/BubbleLayout.java" target-dir="src/br/com/clarity/bubble" />
+            <source-file src="src/android/BubblesLayoutCoordinator.java" target-dir="src/br/com/clarity/bubble" />
+            <source-file src="src/android/BubblesManager.java" target-dir="src/br/com/clarity/bubble" />
+            <source-file src="src/android/BubblesService.java" target-dir="src/br/com/clarity/bubble" />
+            <source-file src="src/android/BubbleTrashLayout.java" target-dir="src/br/com/clarity/bubble" />
+            <source-file src="src/android/OnInitializedCallback.java" target-dir="src/br/com/clarity/bubble" />
+           
+            <resource-file src="src/android/res/layout/bubble_layout.xml" target="res/layout/bubble_layout.xml"/>
+            <resource-file src="src/android/res/layout/bubble_trash_layout.xml" target="res/layout/bubble_trash_layout.xml"/>
+            <resource-file src="src/android/res/drawable/bubble_counter_bkg.xml" target="res/drawable/bubble_counter_bkg.xml"/>
+            <resource-file src="src/android/res/drawable/profile_decorator.png" target="res/drawable/profile_decorator.png"/>
+
+           <resource-file src="src/android/res/mipmap-mdpi/bubble_trash_background.png" target="res/mipmap-mdpi/bubble_trash_background.png"/>
+           <resource-file src="src/android/res/mipmap-hdpi/bubble_trash_background.png" target="res/mipmap-hdpi/bubble_trash_background.png"/>
+           <resource-file src="src/android/res/mipmap-xhdpi/bubble_trash_background.png" target="res/mipmap-xhdpi/bubble_trash_background.png"/>
+           <resource-file src="src/android/res/mipmap-xxhdpi/bubble_trash_background.png" target="res/mipmap-xxhdpi/bubble_trash_background.png"/>
+           <resource-file src="src/android/res/mipmap-xxxhdpi/bubble_trash_background.png" target="res/mipmap-xxxhdpi/bubble_trash_background.png"/>
+   
+
+           <resource-file src="src/android/res/animator/bubble_down_click_animator.xml" target="res/animator/bubble_down_click_animator.xml"/>
+          <resource-file src="src/android/res/animator/bubble_shown_animator.xml" target="res/animator/bubble_shown_animator.xml"/>
+          <resource-file src="src/android/res/animator/bubble_trash_hide_animator.xml" target="res/animator/bubble_trash_hide_animator.xml"/>
+          <resource-file src="src/android/res/animator/bubble_trash_hide_magnetism_animator.xml" target="res/animator/bubble_trash_hide_magnetism_animator.xml"/>
+          <resource-file src="src/android/res/animator/bubble_trash_shown_animator.xml" target="res/animator/bubble_trash_shown_animator.xml"/>
+          <resource-file src="src/android/res/animator/bubble_trash_shown_magnetism_animator.xml" target="res/animator/bubble_trash_shown_magnetism_animator.xml"/>
+          <resource-file src="src/android/res/animator/bubble_up_click_animator.xml" target="res/animator/bubble_up_click_animator.xml"/>
     </platform>
+
+   
 </plugin>

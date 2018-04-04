@@ -1,11 +1,10 @@
 {
-  "name": "cordova-plugin-template",
+  "name": "bubble-plugin",
   "version": "1.0.0",
   "cordova": {
-    "id": "cordova-plugin-template",
+    "id": "bubble-plugin",
     "platforms": [
-      "android",
-      "ios"
+      "android"
     ]
   },
   "description": "A starting point for a Cordova Plugin"
